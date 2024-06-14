@@ -27,18 +27,13 @@ if (isset($_POST['photo'])) {
 $_SESSION['upload'] = 1;
 $_SESSION['filename'] = $filename;
 $_SESSION['tugas_id'] = $_GET['tugas_id'];
+$_SESSION['komplain_id'] = $_GET['komplain_id'];
 
 
 $_SESSION['tugas_id_k'] = $_POST['tugas_id_k'];
 $_SESSION['namaKaryawan'] = $_POST['namaKaryawan'];
 $_SESSION['cleanStatus'] = $_POST['status'];
 $_SESSION['cleanNote'] = $_POST['catatan'];
-
-echo $_SESSION['tugas_id_k'];
-echo $_SESSION['namaKaryawan'];
-echo $_SESSION['cleanStatus'];
-echo $_SESSION['cleanNote'];
-
 
 $script = basename($_SERVER['HTTP_REFERER']);
 require_once 'includes/'. $script;

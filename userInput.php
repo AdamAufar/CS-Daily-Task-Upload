@@ -140,6 +140,4 @@ session_start();
         
     <?php 
     } ?>
-    
-    <input type="submit" value="Submit">
 </html>
