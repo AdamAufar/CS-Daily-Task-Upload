@@ -20,9 +20,9 @@ session_start();
     }
     echo "Lokasi Tugas: " . $_SESSION["lokasi"];?>
     <br>   
-    <input type="button" onclick="location.href='http://localhost/MyApp/login.php';" value="Saya Petugas" />
+    <input type="button" onclick="location.href='http://localhost/CS-Daily-Task-Upload/login.php';" value="Saya Petugas" />
     <br>
-    <input type="button" onclick="location.href='http://localhost/MyApp/includes/userInput.php';" value="Saya Karyawan" />
+    <input type="button" onclick="location.href='http://localhost/CS-Daily-Task-Upload/includes/userInput.php';" value="Saya Karyawan" />
 
 </body>
 </html>

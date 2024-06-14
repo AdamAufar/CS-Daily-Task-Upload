@@ -41,7 +41,7 @@ session_start();
 </head>
 
 <body>   
-    <input type="button" onclick="location.href='http://localhost/MyApp/includes/userInput.php';" value="Back" />
+    <input type="button" onclick="location.href='http://localhost/CS-Daily-Task-Upload/includes/userInput.php';" value="Back" />
 
     <h3> Form Survey/Komplain Karyawan </h3>
 

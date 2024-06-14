@@ -25,7 +25,7 @@ require_once 'includes/absensi.php';
 </head>
  
 <body>
-    <input type="button" onclick="location.href='http://localhost/MyApp/petugasMenu.php';" value="Back" />
+    <input type="button" onclick="location.href='http://localhost/CS-Daily-Task-Upload/petugasMenu.php';" value="Back" />
 
     <h3> Absensi </h3>
     

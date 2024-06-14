@@ -41,7 +41,7 @@ session_start();
 </head>
 
 <body>   
-    <input type="button" onclick="location.href='http://localhost/MyApp/index.php';" value="Back" />
+    <input type="button" onclick="location.href='http://localhost/CS-Daily-Task-Upload/index.php';" value="Back" />
 
     <h3> Form Survey/Komplain Karyawan </h3>
 
@@ -126,8 +126,8 @@ session_start();
         if ($flag1 == 1 && $flag2 == 1) {
             ?>
             
-            <!-- <input type="button" onclick="location.href='http://localhost/MyApp/submitKomplain.php';" value="Submit Komplain" /> -->
-            <input type="button" onclick="location.href='http://localhost/MyApp/includes/submitKomplain.php?tugas_id=<?php echo ${"tugasId$i"} ?>';" value="Submit Komplain" />
+            <!-- <input type="button" onclick="location.href='http://localhost/CS-Daily-Task-Upload/submitKomplain.php';" value="Submit Komplain" /> -->
+            <input type="button" onclick="location.href='http://localhost/CS-Daily-Task-Upload/includes/submitKomplain.php?tugas_id=<?php echo ${"tugasId$i"} ?>';" value="Submit Komplain" />
 
             <?php
         }

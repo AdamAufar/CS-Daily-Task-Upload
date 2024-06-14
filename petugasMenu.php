@@ -13,20 +13,20 @@ if(!isset($_SESSION['id'])){
     <title>Document</title>
 </head>
 <body>    
-    <input type="button" onclick="location.href='http://localhost/MyApp/index.php';" value="Back" />
-    <input type="button" onclick="location.href='http://localhost/MyApp/includes/logout.php';" value="Logout" />
+    <input type="button" onclick="location.href='http://localhost/CS-Daily-Task-Upload/index.php';" value="Back" />
+    <input type="button" onclick="location.href='http://localhost/CS-Daily-Task-Upload/includes/logout.php';" value="Logout" />
     
     <h4>Aktivitas Kegiatan</h4>
     <b>Lokasi Tugas     : <?php echo $_SESSION['lokasi']; ?></b>
     <br>
     
-    <input type="button" onclick="location.href='http://localhost/MyApp/absensi.php';" value="Absensi" />
+    <input type="button" onclick="location.href='http://localhost/CS-Daily-Task-Upload/absensi.php';" value="Absensi" />
     <br>
-    <input type="button" onclick="location.href='http://localhost/MyApp/includes/petugasInputSebelum.php';" value="Input Sebelum Dikerjakan" />
+    <input type="button" onclick="location.href='http://localhost/CS-Daily-Task-Upload/includes/petugasInputSebelum.php';" value="Input Sebelum Dikerjakan" />
     <br>
-    <input type="button" onclick="location.href='http://localhost/MyApp/includes/petugasInputSesudah.php';" value="Input Sesudah Dikerjakan" />
+    <input type="button" onclick="location.href='http://localhost/CS-Daily-Task-Upload/includes/petugasInputSesudah.php';" value="Input Sesudah Dikerjakan" />
     <br>
-    <input type="button" onclick="location.href='http://localhost/MyApp/includes/lihatKomplain.php';" value="Lihat Komplain" />
+    <input type="button" onclick="location.href='http://localhost/CS-Daily-Task-Upload/includes/lihatKomplain.php';" value="Lihat Komplain" />
 
 </body>
 </html>

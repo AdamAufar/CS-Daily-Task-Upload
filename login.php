@@ -18,7 +18,7 @@ if(isset($_SESSION['id'])){
 </head>
 
 <body>
-    <input type="button" onclick="location.href='http://localhost/MyApp/index.php';" value="Back" />
+    <input type="button" onclick="location.href='http://localhost/CS-Daily-Task-Upload/index.php';" value="Back" />
     <br>
     <?php
     if (!isset($_SESSION["id"])) { ?>
