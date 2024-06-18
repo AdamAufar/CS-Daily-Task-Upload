@@ -88,7 +88,7 @@ session_start();
     $headerFlag = 0;
     $allKomplain = $_SESSION['allKomplain'];
     for ($i = 0; $i <= count($allKomplain)-1; $i++) { 
-        ${"komplainId$i"} =  $allKomplain[$i][0];
+        ${"komplainId$i"} =  $allKomplain[$i][8];
 
         // IF not same as last one, dont print
         if ($headerFlag == 0) 
@@ -119,79 +119,76 @@ session_start();
             if ($allKomplain[$i][6] == '-') { 
                 $uniqueId = uniqid("task_");
                 ?>
-                <figure>
-                    <button id="<?php echo $uniqueId; ?>_startCamera">Take Picture</button>
-                    <video id="<?php echo $uniqueId; ?>_video" autoplay></video>
-                    <button id="<?php echo $uniqueId; ?>_capture" style="display: none;">Capture Photo</button>
-                    <canvas id="<?php echo $uniqueId; ?>_canvas" style="display: none;"></canvas>
+                <button id="<?php echo $uniqueId; ?>_startCamera">Take Picture</button>
+                <video id="<?php echo $uniqueId; ?>_video" autoplay></video>
+                <button id="<?php echo $uniqueId; ?>_capture" style="display: none;">Capture Photo</button>
+                <canvas id="<?php echo $uniqueId; ?>_canvas" style="display: none;"></canvas>
 
-                    <form id="<?php echo $uniqueId; ?>_photoForm" action="upload.php?komplain_id=<?php echo ${"komplainId$i"} ?>" method="post" enctype="multipart/form-data" style="display: none;">
-                        <input type="hidden" name="photo" id="<?php echo $uniqueId; ?>_photo">
-                        <input type="submit" value="Upload Photo">
-                    </form>
+                <form id="<?php echo $uniqueId; ?>_photoForm" action="upload.php?komplain_id=<?php echo ${"komplainId$i"} ?>" method="post" enctype="multipart/form-data" style="display: none;">
+                    <input type="hidden" name="photo" id="<?php echo $uniqueId; ?>_photo">
+                    <input type="submit" value="Upload Photo">
+                </form>
 
-                    <script>
-                        (function() {
-                            const startCameraButton = document.getElementById('<?php echo $uniqueId; ?>_startCamera');
-                            const video = document.getElementById('<?php echo $uniqueId; ?>_video');
-                            const captureButton = document.getElementById('<?php echo $uniqueId; ?>_capture');
-                            const canvas = document.getElementById('<?php echo $uniqueId; ?>_canvas');
-                            const photoInput = document.getElementById('<?php echo $uniqueId; ?>_photo');
-                            const photoForm = document.getElementById('<?php echo $uniqueId; ?>_photoForm');
+                <script>
+                    (function() {
+                        const startCameraButton = document.getElementById('<?php echo $uniqueId; ?>_startCamera');
+                        const video = document.getElementById('<?php echo $uniqueId; ?>_video');
+                        const captureButton = document.getElementById('<?php echo $uniqueId; ?>_capture');
+                        const canvas = document.getElementById('<?php echo $uniqueId; ?>_canvas');
+                        const photoInput = document.getElementById('<?php echo $uniqueId; ?>_photo');
+                        const photoForm = document.getElementById('<?php echo $uniqueId; ?>_photoForm');
 
-                            let stream;
+                        let stream;
 
-                            startCameraButton.addEventListener('click', () => {
-                                // Access the device camera and stream to video element
-                                navigator.mediaDevices.getUserMedia({ video: true })
-                                    .then(s => {
-                                        stream = s;
-                                        video.srcObject = stream;
-                                        video.style.display = 'block';
-                                        captureButton.style.display = 'block';
-                                        video.play(); // Ensure the video is playing
-                                    })
-                                    .catch(err => {
-                                        console.error("Error accessing camera: " + err);
-                                    });
-                            });
+                        startCameraButton.addEventListener('click', () => {
+                            // Access the device camera and stream to video element
+                            navigator.mediaDevices.getUserMedia({ video: true })
+                                .then(s => {
+                                    stream = s;
+                                    video.srcObject = stream;
+                                    video.style.display = 'block';
+                                    captureButton.style.display = 'block';
+                                    video.play(); // Ensure the video is playing
+                                })
+                                .catch(err => {
+                                    console.error("Error accessing camera: " + err);
+                                });
+                        });
 
-                            captureButton.addEventListener('click', () => {
-                                // Ensure the video stream is playing
-                                if (video.readyState === video.HAVE_ENOUGH_DATA) {
-                                    const context = canvas.getContext('2d');
-                                    canvas.width = video.videoWidth;
-                                    canvas.height = video.videoHeight;
-                                    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                        captureButton.addEventListener('click', () => {
+                            // Ensure the video stream is playing
+                            if (video.readyState === video.HAVE_ENOUGH_DATA) {
+                                const context = canvas.getContext('2d');
+                                canvas.width = video.videoWidth;
+                                canvas.height = video.videoHeight;
+                                context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-                                    // Convert the image to a data URL and set it as the value of the hidden input field
-                                    const dataUrl = canvas.toDataURL('image/png');
-                                    photoInput.value = dataUrl;
+                                // Convert the image to a data URL and set it as the value of the hidden input field
+                                const dataUrl = canvas.toDataURL('image/png');
+                                photoInput.value = dataUrl;
 
-                                    // Stop the video stream
-                                    stream.getTracks().forEach(track => track.stop());
-                                    video.srcObject = null;
-                                    video.style.display = 'none';
-                                    captureButton.style.display = 'none';
+                                // Stop the video stream
+                                stream.getTracks().forEach(track => track.stop());
+                                video.srcObject = null;
+                                video.style.display = 'none';
+                                captureButton.style.display = 'none';
 
-                                    // Show the photo form and submit it
-                                    photoForm.style.display = 'block';
-                                    photoForm.submit();
-                                } else {
-                                    console.error("Video is not ready for capturing.");
-                                }
-                            });
+                                // Show the photo form and submit it
+                                photoForm.style.display = 'block';
+                                photoForm.submit();
+                            } else {
+                                console.error("Video is not ready for capturing.");
+                            }
+                        });
 
-                            // Clean up stream on page unload
-                            window.addEventListener('beforeunload', () => {
-                                if (stream) {
-                                    stream.getTracks().forEach(track => track.stop());
-                                }
-                            });
-                        })();
-                    </script>
-                    <figcaption>Sebelum</figcaption>
-                </figure>
+                        // Clean up stream on page unload
+                        window.addEventListener('beforeunload', () => {
+                            if (stream) {
+                                stream.getTracks().forEach(track => track.stop());
+                            }
+                        });
+                    })();
+                </script>
                 <?php 
             }  else {
                 ?> <img src="<?php echo $allKomplain[$i][6] ?>" alt="Sebelum" style="width:100px;height:100px;"> <?php

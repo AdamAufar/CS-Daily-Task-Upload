@@ -183,22 +183,26 @@ require_once 'includes/absensi.php';
                 echo '<tr>';
                 echo '<td>' . $i->format("Y-m-d") . '</td>';
 
-                if (isset($all_absen[$j][1]) && $i->format("Y-m-d") == $all_absen[$j][1]) {
-                    echo '<td>' . $all_absen[$j][2] . '</td>';
+                // echo $i->format("Y-m-d") . '   ';
+                // echo  $all_absen[$j][1] .  '<br>';
+
+                if (date('w', strtotime($i->format("Y-m-d"))) == '6' || date('w', strtotime($i->format("Y-m-d"))) == '0') {
+                    echo '<td> LIBUR </td>';
+                    if (isset($all_absen[$j][1]) && $i->format("Y-m-d") == $all_absen[$j][1]) {
+                        $j++;
+                    }
+                } else if (isset($all_absen[$j][1]) && $i->format("Y-m-d") == $all_absen[$j][1]) {
+                    if ($all_absen[$j][2] > '08:00:00') {
+                        echo '<td> <span style="color: red;"> ' . $all_absen[$j][2] . '</span></td>';
+                    } else {
+                        echo '<td>' . $all_absen[$j][2] . '</td>';
+                    }
                     $j++;
                 } else {
                     echo '<td> - </td>';
                 }
                 echo '</tr>';
             }
-
-            // foreach ($_SESSION['all_absen'] as $item) {
-            //     $x = explode(' ', $item[1]);
-            //     echo '<tr>';
-            //     echo '<td>' . $x[0] . '</td>';
-            //     echo '<td>' . $x[1] . '</td>';
-            //     echo '</tr>';
-            // } 
             ?>
         </tbody>
     </table>

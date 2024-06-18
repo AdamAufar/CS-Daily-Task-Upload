@@ -4,6 +4,8 @@ session_start();
 
 $komplain_id = $_SESSION['komplain_id'];
 $followup = $_SESSION['filename'];
+echo $followup;
+echo $komplain_id;
 if (isset($_SESSION['upload']) && $_SESSION['upload'] == 1) {
     $_SESSION['upload'] = 0;
     $sql = "UPDATE komplain SET followup = '$followup', status = 0 WHERE id = $komplain_id";
@@ -19,7 +21,7 @@ $sql = "SELECT k.tugas_id, th.details, k.nama,
                 WHEN k.status = 1 THEN 'Kurang Bersih'
                 WHEN k.status = 2 THEN 'Kotor'
                 END as statusBersih,
-            k.catatan, k.filename, k.followup, date_format(created_at, '%H:%i') as 'created_at' 
+            k.catatan, k.filename, k.followup, date_format(created_at, '%H:%i') as 'created_at', k.id
         FROM komplain k 
             JOIN tugas_harian th ON k.tugas_id = th.id
         WHERE th.lokasi = '$lokasi'
