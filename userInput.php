@@ -11,133 +11,267 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Submit Komplain</title>
     <style>
-        #video {
-            display: none;
-            margin: auto;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+            margin-top: 20px;
+        }
+
+        h3 {
+            color: #333;
+        }
+
+        table {
             width: 100%;
-            max-width: 500px;
+            margin: 20px 0;
+            border-collapse: collapse;
         }
-        #canvas {
-            display: none;
+
+        table, th, td {
+            border: 1px solid #ddd;
         }
-        .task {
-            margin-bottom: 20px;
-            clear: both;
+
+        th, td {
+            padding: 8px;
+            text-align: left;
         }
-        .task-header {
-            margin-bottom: 10px;
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
         }
+
+        td {
+            background-color: #fff;
+        }
+
+        input[type="button"], .back-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 20px 0;
+            display: block;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        input[type="button"]:hover, .back-button:hover {
+            background-color: #45a049;
+        }
+
         .images {
             display: flex;
         }
-        .images figure {
-            margin-right: -10px;
+
+        figure {
+            margin: 20px 0;
+            text-align: left;
         }
+
+        figure img {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+        }
+
+        figure figcaption {
+            text-align: right;
+            margin-top: 5px;
+        }
+
+        .images figure {
+            margin-right: 10px;
+        }
+
         .images img {
             width: 100px;
             height: 100px;
         }
+
+        figcaption {
+            margin-right: 25px;
+        }
+
+        .task {
+            margin-bottom: 20px;
+            clear: both;
+        }
+
+        .task-header {
+            margin-bottom: 10px;
+        }
+
+        /* Button Styling */
+        .back-button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #45a049;
+        }
+
+        input[type="button"], .back-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 20px 0;
+            display: block;
+            width: fit-content;
+            font-size: 15px; 
+            margin-left: 0;
+            margin-right: auto;
+        }
     </style>
 </head>
 
-<body>   
-    <input type="button" onclick="location.href='http://localhost/CS-Daily-Task-Upload/index.php';" value="Back" />
+<body>
+    <div class="container">
+        <a href="http://localhost/CS-Daily-Task-Upload/index.php" class="back-button">Back</a>
 
-    <h3> Form Survey/Komplain Karyawan </h3>
+        <h3>Form Survey/Komplain Karyawan</h3>
 
-    <p>NIK     : <?php echo $_SESSION['nik'];?></p>
-    <p>Nama    : <?php echo $_SESSION['nama'];?></p>
-    <p>Jabatan : <?php echo $_SESSION['jabatan'];?></p>
-    <br>
-    
-    <b>Lokasi Tugas     : <?php echo $_SESSION['lokasi']; ?></b> <br>
-  
-    <!-- <b>Nama Karyawan</b> <input type="text" name="namaKaryawan" placeholder="Nama Karyawan"> -->
+        <table>
+            <tbody>
+                <tr>
+                    <td><b>NIK</b></td>
+                    <td><?php 
+                        if (isset($_SESSION['nik'])) 
+                            echo $_SESSION['nik'];
+                        else 
+                            echo '-'
+                    ?></td>
+                </tr>
+                <tr>
+                    <td><b>Nama</b></td>
+                    <td><?php 
+                        if (isset($_SESSION['nama'])) 
+                            echo $_SESSION['nama'];
+                        else 
+                            echo '-'
+                    ?></td>
+                </tr>
+                <tr>
+                    <td><b>Jabatan</b></td>
+                    <td><?php 
+                        if (isset($_SESSION['jabatan'])) 
+                            echo $_SESSION['jabatan'];
+                        else 
+                            echo '-'
+                    ?></td>
+                </tr>
+                <tr>
+                    <td><b>Lokasi Tugas</b></td>
+                    <td><?php echo $_SESSION['lokasi'];?></td>
+                </tr>
+            </tbody>
+        </table>
 
-    <h3>Laporan Hasil Pekerjaan</h3>
-    <?php
-    $tugas = $_SESSION['tugasList']; 
-    $tugas_images_sebelum = $_SESSION['tugas_images_sebelum'];
-    $tugas_images_sesudah = $_SESSION['tugas_images_sesudah'];
-    $flag1 = 0;
-    $flag2 = 0;
-    for ($i = 0; $i <= count($tugas)-1; $i++) {
-        ${"tugasId$i"} =  $tugas[$i][0];
-        ${"tugasName$i"} = ($i+1) . ". " . $tugas[$i][1];
-        echo '<div class="task">';
-        echo '<div class="task-header">' . ${"tugasName$i"} . '</div>'; 
-        ?>
-        <!-- <p>Sudah Dikerjakan</p> -->
+        <h3>Laporan Hasil Pekerjaan</h3>
         <?php
-        
-        
-        // Sebelum Image
-        echo '<div class="images">';
-        for ($j = 0; $j <= count($tugas)-1; $j++) {
-            if (isset($tugas_images_sebelum[$j][0]) && $tugas_images_sebelum[$j][0] == $tugas[$i][0]){ 
-                $flag1 = 1; ?>
-                <figure>
-                    <img src="<?php echo $tugas_images_sebelum[$j][1] ?>" style="width:100px;height:100px;">
-                    <figcaption>Sebelum</figcaption>
-                </figure>
-                <?php break;
-            } 
-        }
-        if ($flag1 == 0) { ?>
-            <figure>
-                <button type="button">
-                    <img src="images/noImage.jpg" style="width:100px;height:100px;">
-                    <figcaption>Belum Difoto</figcaption>
-                </button>
-            </figure>
-            <?php
-            echo '</div></div>';
-            continue;
-        } 
-
-
-        // Sesudah Image
-        echo '<div class="images">';
-        for ($k = 0; $k <= count($tugas)-1; $k++) {
-            if (isset($tugas_images_sesudah[$k][0]) && $tugas_images_sesudah[$k][0] == $tugas[$i][0]){ 
-                $flag2 = 1; 
-                ?>
-                <figure>
-                    <img src="<?php echo $tugas_images_sesudah[$k][1] ?>" style="width:100px;height:100px;">
-                    <figcaption>Sesudah</figcaption>
-                </figure>
-                <?php break;
-            } 
-        }
-        if ($flag2 == 0) {  ?>
-            <figure>
-                <button type="button">
-                    <img src="images/noImage.jpg" style="width:100px;height:100px;">
-                    <figcaption>Belum Difoto</figcaption>
-                </button>
-            </figure>
-            <?php
-            echo '</div></div>';
-            continue;
-        } 
-
-        echo '</div></div>';
-
-        if ($flag1 == 1 && $flag2 == 1) {
-            ?>
-            
-            <!-- <input type="button" onclick="location.href='http://localhost/CS-Daily-Task-Upload/submitKomplain.php';" value="Submit Komplain" /> -->
-            <input type="button" onclick="location.href='http://localhost/CS-Daily-Task-Upload/includes/submitKomplain.php?tugas_id=<?php echo ${"tugasId$i"} ?>';" value="Submit Komplain" />
-
-            <?php
-        }
-        
-        echo '<br><br>';
-        
+        $tugas = $_SESSION['tugasList']; 
+        $tugas_images_sebelum = $_SESSION['tugas_images_sebelum'];
+        $tugas_images_sesudah = $_SESSION['tugas_images_sesudah'];
         $flag1 = 0;
         $flag2 = 0;
-        ?>
-        
-    <?php 
-    } ?>
+        for ($i = 0; $i <= count($tugas)-1; $i++) {
+            ${"tugasId$i"} =  $tugas[$i][0];
+            ${"tugasName$i"} = ($i+1) . ". " . $tugas[$i][1];
+            echo '<div class="task">';
+            echo '<div class="task-header">' . ${"tugasName$i"} . '</div>'; 
+            ?>
+
+            <div class="images">
+                <?php
+                // Sebelum Image
+                for ($j = 0; $j <= count($tugas)-1; $j++) {
+                    if (isset($tugas_images_sebelum[$j][0]) && $tugas_images_sebelum[$j][0] == $tugas[$i][0]){ 
+                        $flag1 = 1; ?>
+                        <figure>
+                            <img src="<?php echo $tugas_images_sebelum[$j][1] ?>" alt="Sebelum">
+                            <figcaption>Sebelum</figcaption>
+                        </figure>
+                        <?php break;
+                    } 
+                }
+                if ($flag1 == 0) { ?>
+                    <figure>
+                        <img src="images/noImage.jpg" alt="Belum Difoto">
+                        <figcaption>Belum Difoto</figcaption>
+                    </figure>
+                <?php 
+                } 
+                ?>
+                
+                <?php
+                // Sesudah Image
+                for ($k = 0; $k <= count($tugas)-1; $k++) {
+                    if (isset($tugas_images_sesudah[$k][0]) && $tugas_images_sesudah[$k][0] == $tugas[$i][0]){ 
+                        $flag2 = 1; 
+                        ?>
+                        <figure>
+                            <img src="<?php echo $tugas_images_sesudah[$k][1] ?>" alt="Sesudah">
+                            <figcaption>Sesudah</figcaption>
+                        </figure>
+                        <?php break;
+                    } 
+                }
+                if ($flag2 == 0) { ?>
+                    <figure>
+                        <img src="images/noImage.jpg" alt="Belum Difoto">
+                        <figcaption>Belum Difoto</figcaption>
+                    </figure>
+                <?php 
+                } 
+                ?>
+            </div>
+
+            <?php
+            if ($flag1 == 1 && $flag2 == 1) {
+                ?>
+                <input type="button" onclick="location.href='http://localhost/CS-Daily-Task-Upload/includes/submitKomplain.php?tugas_id=<?php echo ${"tugasId$i"} ?>';" value="Submit Komplain" />
+                <?php
+            }
+            
+            echo '<br><br>';
+            
+            $flag1 = 0;
+            $flag2 = 0;
+            ?>
+        <?php 
+        } ?>
+    </div>
+</body>
 </html>
