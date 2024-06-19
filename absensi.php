@@ -119,7 +119,7 @@ require_once 'includes/absensi.php';
             text-align: center;
             text-decoration: none;
             display: inline-block;
-            font-size: 16px;
+            font-size: 13px;
             margin-bottom: 10px;
             cursor: pointer;
             border-radius: 4px;
@@ -163,10 +163,12 @@ require_once 'includes/absensi.php';
 
         <?php 
         if (!isset($_SESSION['absensi_image'])) {  ?>
-            <button id="startCamera">Take Picture</button>
-            <video id="video" autoplay></video>
-            <button id="capture" style="display: none;">Capture Photo</button>
-            <canvas id="canvas" style="display: none;"></canvas>
+            <div style="text-align: center;">
+                <button id="startCamera">Take Picture</button>
+                <video id="video" autoplay></video>
+                <button id="capture" style="display: none;">Capture Photo</button>
+                <canvas id="canvas" style="display: none;"></canvas>
+            </div>
 
             <form id="photoForm" action="upload.php" method="post" enctype="multipart/form-data" style="display: none;">
                 <input type="hidden" name="photo" id="photo">
@@ -242,6 +244,7 @@ require_once 'includes/absensi.php';
         <table>
             <thead>
                 <tr>
+                    <th>Hari</th>
                     <th>Tanggal</th>
                     <th>Jam Absen</th>
                 </tr>
@@ -254,7 +257,32 @@ require_once 'includes/absensi.php';
                 $all_absen = $_SESSION['all_absen'];
                 for ($i = $begin; $i <= $end; $i->modify('+1 day')) {
                     echo '<tr>';
-                    echo '<td>' . $i->format("Y-m-d") . '</td>';
+                    echo '<td>';
+                        switch (date('w', strtotime($i->format("Y-m-d")))) {
+                            case "0":
+                            echo "Minggu";
+                            break;
+                            case "1":
+                            echo "Senin";
+                            break;
+                            case "2":
+                            echo "Selasa";
+                            break;
+                            case "3":
+                            echo "Rabu";
+                            break;
+                            case "4":
+                            echo "Kamis";
+                            break;
+                            case "5":
+                            echo "Jumat";
+                            break;
+                            case "6":
+                            echo "Sabtu";
+                            break;
+                        }
+                    echo '</td>';
+                    echo '<td>' . $i->format("d-m-Y") . '</td>';
 
                     if (date('w', strtotime($i->format("Y-m-d"))) == '6' || date('w', strtotime($i->format("Y-m-d"))) == '0') {
                         echo '<td>LIBUR</td>';

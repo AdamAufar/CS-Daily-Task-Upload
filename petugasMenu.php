@@ -46,7 +46,7 @@ if(!isset($_SESSION['id'])){
         .button {
             background-color: #4CAF50;
             color: white;
-            padding: 10px 20px;
+            padding: 10px 17px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
@@ -75,7 +75,7 @@ if(!isset($_SESSION['id'])){
         }
 
         .button-back {
-            position: absolute;
+            align-items: left;
             top: 20px;
             left: 20px;
             background-color: #4CAF50;
@@ -90,15 +90,33 @@ if(!isset($_SESSION['id'])){
         .button-back:hover {
             background-color: #45a049;
         }
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .flex-column {
+            display: flex;
+            flex-direction: column;
+        }
     </style>
 </head>
 <body>
-    <input type="button" class="button-back" onclick="location.href='http://localhost/CS-Daily-Task-Upload/index.php';" value="Back" />
     <div class="container">
-        <input type="button" class="button button-danger" onclick="location.href='http://localhost/CS-Daily-Task-Upload/includes/logout.php';" value="Logout" />
+
+        <div class="flex-container">
+
+            <div class="flex-column">
+                <input type="button" class="button-back" onclick="location.href='http://localhost/CS-Daily-Task-Upload/index.php';" value="Back" />
+            </div>
+            <div class="flex-column">
+                <input type="button" class="button button-danger" onclick="location.href='http://localhost/CS-Daily-Task-Upload/includes/logout.php';" value="Logout" />
+            </div>
+        </div>
         
-        <h4>Aktivitas Kegiatan</h4>
-        <b>Lokasi Tugas: <?php echo $_SESSION['lokasi']; ?></b>
+        <h4>Aktivitas Kegiatan</h4>        
+        <p>Lokasi Tugas: <b> <?php echo $_SESSION['lokasi']; ?></b></p>
         <br>
         
         <input type="button" class="button button-secondary" onclick="location.href='http://localhost/CS-Daily-Task-Upload/absensi.php';" value="Absensi" />

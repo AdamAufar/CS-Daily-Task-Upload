@@ -120,13 +120,33 @@ session_start();
             border-radius: 4px;
             padding: 5px;
         }
+        
+        /* Button Styling */
+        .back-button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 13px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 
-<body>   
+<body>
     <div class="container">
-        <input type="button" onclick="location.href='http://localhost/CS-Daily-Task-Upload/includes/userInput.php';" value="Back" />
-
+        <a href="http://localhost/CS-Daily-Task-Upload/includes/userinput.php" class="back-button">Back</a>
+    
         <h3> Form Survey/Komplain Karyawan </h3>
 
         <table>

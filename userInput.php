@@ -108,6 +108,7 @@ session_start();
         }
 
         figcaption {
+            text-align: center;
             margin-right: 25px;
         }
 
@@ -150,7 +151,7 @@ session_start();
             margin: 20px 0;
             display: block;
             width: fit-content;
-            font-size: 15px; 
+            font-size: 13px; 
             margin-left: 0;
             margin-right: auto;
         }

@@ -142,7 +142,7 @@ session_start();
             text-align: center;
             text-decoration: none;
             display: inline-block;
-            font-size: 16px;
+            font-size: 13px;
             margin-bottom: 10px;
             cursor: pointer;
             border-radius: 4px;
