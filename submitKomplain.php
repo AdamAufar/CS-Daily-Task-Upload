@@ -28,23 +28,31 @@ session_start();
         h3 {
             margin-bottom: 10px;
         }
+
         table {
             width: 100%;
-            margin-bottom: 20px;
+            margin: 20px 0;
             border-collapse: collapse;
-            background-color: #fff;
-            border-radius: 5px;
-            overflow: hidden;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        table td, table th {
-            padding: 10px;
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
         }
-        table tbody tr:last-child td {
-            border-bottom: none;
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
         }
+
+        td {
+            background-color: #fff;
+        }
+
         .task {
             margin-bottom: 20px;
         }

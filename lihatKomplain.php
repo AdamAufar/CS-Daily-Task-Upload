@@ -36,6 +36,7 @@ session_start();
             border-collapse: collapse;
             margin-bottom: 20px;
             background-color: #fff;
+            table-layout: fixed; 
         }
         
         table, th, td {
@@ -45,6 +46,7 @@ session_start();
         th, td {
             padding: 10px;
             text-align: left;
+            word-wrap:break-word;
         }
         
         th {
@@ -161,9 +163,9 @@ session_start();
             }
                     
             echo '<tr>';
-                echo '<td>' . $allKomplain[$i][2] . '</td>';
-                echo '<td>' . $allKomplain[$i][4] . '</td>';
-                echo '<td>' . $allKomplain[$i][3] . '</td>';
+                echo '<td width="100px">' . $allKomplain[$i][2] . '</td>';
+                echo '<td width="100px">' . $allKomplain[$i][4] . '</td>';
+                echo '<td width="100px">' . $allKomplain[$i][3] . '</td>';
                 echo '<td>'; 
                     ?> <img src="<?php echo $allKomplain[$i][5] ?>" alt="Sebelum" style="width:100px;height:100px;"> <?php
                 echo '</td>';
