@@ -122,7 +122,7 @@ session_start();
         }
 
         figure figcaption {
-            text-align: left;
+            text-align: center;
             margin-top: 5px;
         }
 
@@ -142,20 +142,28 @@ session_start();
         .task-header {
             margin-bottom: 10px;
         }
-
         .images {
             display: flex;
+            gap: 20px; /* Add spacing between images */
         }
 
         .images figure {
-            margin-right: -10px;
+            flex: 1;
+            max-width: 50%; /* Cap each image at half the container width */
         }
 
         .images img {
-            width: 100px;
-            height: 100px;
+            width: 100%;
+            height: auto;
+            display: block;
         }
         
+        img {
+            max-width: 100%;
+            height: auto;
+            width: auto\9; /* ie8 */
+        }
+
         figcaption {
             margin-right:25px; /* Add spacing between figcaptions */
         }
@@ -179,6 +187,14 @@ session_start();
         .back-button:hover {
             background-color: #45a049;
         }
+
+        .center-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
     </style>
 </head>
 

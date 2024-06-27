@@ -77,9 +77,21 @@ session_start();
         input[type="button"]:hover, .back-button:hover {
             background-color: #45a049;
         }
-
+        
         .images {
             display: flex;
+            gap: 20px; /* Add spacing between images */
+        }
+
+        .images figure {
+            flex: 1;
+            max-width: 50%; /* Cap each image at half the container width */
+        }
+
+        .images img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         figure {
@@ -94,17 +106,14 @@ session_start();
         }
 
         figure figcaption {
-            text-align: right;
+            text-align: center;
             margin-top: 5px;
         }
 
-        .images figure {
-            margin-right: 10px;
-        }
-
-        .images img {
-            width: 100px;
-            height: 100px;
+        img {
+            max-width: 100%;
+            height: auto;
+            width: auto\9; /* ie8 */
         }
 
         figcaption {

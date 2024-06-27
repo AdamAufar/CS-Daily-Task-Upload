@@ -64,21 +64,18 @@ session_start();
         
         .images {
             display: flex;
-            justify-content: left; /* Center the items horizontally */
-            align-items: center; /* Center items vertically if necessary */
-            margin-bottom: 20px; /* Added margin-bottom for spacing */
+            gap: 20px; /* Add spacing between images */
         }
 
         .images figure {
-            margin: 0 10px; /* Adjusted to add space around figures */
-            text-align: center; /* Center the content inside figures */
+            flex: 1;
+            max-width: 50%; /* Cap each image at half the container width */
         }
 
         .images img {
-            width: 200px;
-            height: 150px;
+            width: 100%;
+            height: auto;
             display: block;
-            object-fit: cover;
         }
 
 
@@ -193,7 +190,7 @@ session_start();
             </tbody>
         </table>
 
-        <h3>Laporan Hasil Pekerjaan</h3>
+        <h3>Submit Komplain Tugas Harian</h3>
         <?php
         echo '<div class="task">';
         echo '<div class="task-header">' . $_SESSION['nama_tugas'][0] . '. ' . $_SESSION['nama_tugas'][1] . '</div>'; 

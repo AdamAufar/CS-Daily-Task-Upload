@@ -74,7 +74,13 @@ session_start();
             width: 100px;
             height: 100px;
         }
-        
+
+        img {
+            max-width: 100%;
+            height: auto;
+            width: auto\9; /* ie8 */
+        }
+                
         /* Button Styling */
         .back-button {
             background-color: #4CAF50;

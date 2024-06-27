@@ -121,7 +121,7 @@ session_start();
         }
 
         figure figcaption {
-            text-align: left;
+            text-align: center;
             margin-top: 5px;
         }
 
@@ -152,6 +152,29 @@ session_start();
         .back-button:hover {
             background-color: #45a049;
         }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            width: auto\9; /* ie8 */
+        }
+        
+        .images {
+            display: flex;
+            gap: 20px; /* Add spacing between images */
+        }
+
+        .images figure {
+            flex: 1;
+            max-width: 50%; /* Cap each image at half the container width */
+        }
+
+        .images img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
     </style>
 </head>
 
@@ -192,12 +215,13 @@ session_start();
         for ($i = 0; $i <= count($tugas)-1; $i++) { 
             echo '<p>' . ($i+1) . ". " . $tugas[$i][1] . '</p>';
             ${"tugasId$i"} =  $tugas[$i][0];
+            echo '<div class="images">';
             for ($j = 0; $j <= count($tugas)-1; $j++) {
                 if (isset($tugas_images[$j][0]) && $tugas_images[$j][0] == $tugas[$i][0]){ 
                     $flag = 1; 
                     ?>
                     <figure>
-                        <img src="<?php echo $tugas_images[$j][1] ?>" style="width:100px;height:100px;">
+                        <img src="<?php echo $tugas_images[$j][1] ?>">
                         <figcaption>Sebelum: <?php echo $tugas_images[$j][2] ?></figcaption>
                     </figure>
                     <?php break;
@@ -281,6 +305,7 @@ session_start();
                 </figure>
                 <?php 
             } 
+            echo '</div>';
             $flag = 0; ?>
         <?php 
         } ?>
