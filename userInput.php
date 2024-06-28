@@ -238,7 +238,7 @@ session_start();
                 }
                 if ($flag1 == 0) { ?>
                     <figure>
-                        <img src="images/noImage.jpg" alt="Belum Difoto">
+                        <img src="images/noImageSebelum.png" alt="Belum Difoto">
                         <figcaption>Belum Difoto</figcaption>
                     </figure>
                 <?php 
@@ -260,7 +260,7 @@ session_start();
                 }
                 if ($flag2 == 0) { ?>
                     <figure>
-                        <img src="images/noImage.jpg" alt="Belum Difoto">
+                        <img src="images/noImageSesudah.png" alt="Belum Difoto">
                         <figcaption>Belum Difoto</figcaption>
                     </figure>
                 <?php 

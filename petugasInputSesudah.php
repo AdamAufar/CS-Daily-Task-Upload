@@ -251,8 +251,8 @@ session_start();
             }
             if ($flag1 == 0) { ?>
                 <figure>
-                    <img src="images/noImage.jpg" alt="No Image">
-                    <figcaption>Sebelum</figcaption>
+                    <img src="images/noImageSebelum.png" alt="No Image">
+                    <figcaption>Belum Difoto</figcaption>
                 </figure>
                 <?php 
                 echo '</div></div>';

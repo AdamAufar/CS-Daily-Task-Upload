@@ -24,6 +24,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $_SESSION['nama'] = $qry['nama'];
         $_SESSION['nik'] = $qry['nik'];
         $_SESSION['jabatan'] = $qry['jabatan'];
+
+        $userid = $_SESSION['id'];
+        $sql = "UPDATE users SET status = 1 WHERE id = $userid";
+        print_r($sql);
+        $login_q = mysqli_query($conn, $sql);
+
         header('Location: ../petugasMenu.php');
     } else {
         echo "<script>alert('User Tidak Valid')</script>";
