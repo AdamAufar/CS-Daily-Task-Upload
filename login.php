@@ -128,7 +128,7 @@ if(isset($_SESSION['id'])){
 
 <body>
     <div class="container">
-        <a href="http://localhost/CS-Daily-Task-Upload/index.php" class="back-button">Back</a>
+        <a href="index.php" class="back-button">Back</a>
         <?php if (!isset($_SESSION["id"])) { ?>
             <img src="images/bgalogo.png" alt="Logo">
             <h4>Selamat Datang Di</h4>

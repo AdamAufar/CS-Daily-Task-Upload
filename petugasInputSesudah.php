@@ -200,7 +200,7 @@ session_start();
 
 <body>
     <div class="container">
-        <a href="http://localhost/CS-Daily-Task-Upload/petugasMenu.php" class="back-button">Back</a>
+        <a href="petugasMenu.php" class="back-button">Back</a>
     
         <h3>Form Input Pekerjaan Harian</h3>
 

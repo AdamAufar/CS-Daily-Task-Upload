@@ -108,10 +108,10 @@ if(!isset($_SESSION['id'])){
         <div class="flex-container">
 
             <div class="flex-column">
-                <input type="button" class="button-back" onclick="location.href='http://localhost/CS-Daily-Task-Upload/index.php';" value="Back" />
+                <input type="button" class="button-back" onclick="location.href='index.php';" value="Back" />
             </div>
             <div class="flex-column">
-                <input type="button" class="button button-danger" onclick="location.href='http://localhost/CS-Daily-Task-Upload/includes/logout.php';" value="Logout" />
+                <input type="button" class="button button-danger" onclick="location.href='includes/logout.php';" value="Logout" />
             </div>
         </div>
         
@@ -119,13 +119,13 @@ if(!isset($_SESSION['id'])){
         <p>Lokasi Tugas: <b> <?php echo $_SESSION['lokasi']; ?></b></p>
         <br>
         
-        <input type="button" class="button button-secondary" onclick="location.href='http://localhost/CS-Daily-Task-Upload/absensi.php';" value="Absensi" />
+        <input type="button" class="button button-secondary" onclick="location.href='absensi.php';" value="Absensi" />
         <br>
-        <input type="button" class="button button-secondary" onclick="location.href='http://localhost/CS-Daily-Task-Upload/includes/petugasInputSebelum.php';" value="Input Sebelum Dikerjakan" />
+        <input type="button" class="button button-secondary" onclick="location.href='includes/petugasInputSebelum.php';" value="Input Sebelum Dikerjakan" />
         <br>
-        <input type="button" class="button button-secondary" onclick="location.href='http://localhost/CS-Daily-Task-Upload/includes/petugasInputSesudah.php';" value="Input Sesudah Dikerjakan" />
+        <input type="button" class="button button-secondary" onclick="location.href='includes/petugasInputSesudah.php';" value="Input Sesudah Dikerjakan" />
         <br>
-        <input type="button" class="button button-secondary" onclick="location.href='http://localhost/CS-Daily-Task-Upload/includes/lihatKomplain.php';" value="Lihat Komplain" />
+        <input type="button" class="button button-secondary" onclick="location.href='includes/lihatKomplain.php';" value="Lihat Komplain" />
     </div>
 </body>
 </html>
